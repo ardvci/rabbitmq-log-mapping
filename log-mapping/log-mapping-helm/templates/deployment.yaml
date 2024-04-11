@@ -1,0 +1,47 @@
+{{- if .Values.consumerImage.enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-aggregation-consumer-deployment
+  labels:
+    app: log-aggregation-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-aggregation-consumer
+  template:
+    metadata:
+      labels:
+        app: log-aggregation-consumer
+    spec:
+      containers:
+      - name: {{ .Values.consumerImage.name }}
+        image: "{{ .Values.consumerImage.name }}:{{ .Values.consumerImage.tag }}"
+        imagePullPolicy: Never
+{{- end }}
+
+{{- if .Values.producerImage.enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-aggregation-producer-deployment
+  labels:
+    app: log-aggregation-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-aggregation-producer
+  template:
+    metadata:
+      labels:
+        app: log-aggregation-producer
+    spec:
+      containers:
+      - name: {{ .Values.producerImage.name }}
+        image: "{{ .Values.producerImage.name }}:{{ .Values.producerImage.tag }}"
+        imagePullPolicy: Never
+{{- end }}
