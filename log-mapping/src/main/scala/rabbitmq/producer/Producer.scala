@@ -3,7 +3,7 @@ package rabbitmq.producer
 
 import com.rabbitmq.client.*
 
-import scala.io.circe.Json
+import io.circe.Json
 
 class Producer(user: String, password: String, host: String, port:String){
   def produceMessage(message: Json): Unit = {
@@ -12,7 +12,7 @@ class Producer(user: String, password: String, host: String, port:String){
     val connection = factory.newConnection()
     val channel = connection.createChannel()
 
-    val queueName = "log-aggregation-queue"
+    val queueName = "log-mapping-queue"
     channel.basicPublish("", queueName, null, message.toString.getBytes("UTF-8"))
     println(s"Sent '$message'")
 

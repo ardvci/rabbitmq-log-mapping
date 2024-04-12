@@ -19,7 +19,7 @@ spec:
       containers:
       - name: {{ .Values.consumerImage.name }}
         image: "{{ .Values.consumerImage.name }}:{{ .Values.consumerImage.tag }}"
-        imagePullPolicy: Never
+        imagePullPolicy: {{ .Values.consumerImage.imagePullPolicy }}
 {{- end }}
 
 {{- if .Values.producerImage.enabled }}
@@ -43,5 +43,5 @@ spec:
       containers:
       - name: {{ .Values.producerImage.name }}
         image: "{{ .Values.producerImage.name }}:{{ .Values.producerImage.tag }}"
-        imagePullPolicy: Never
+        imagePullPolicy: {{ .Values.producerImage.imagePullPolicy }}
 {{- end }}

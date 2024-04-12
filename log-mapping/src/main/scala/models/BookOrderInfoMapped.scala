@@ -1,5 +1,5 @@
 package dev.ardvci
-package dataGenerator
+package models
 
 import java.time.LocalDateTime
 

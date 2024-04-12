@@ -14,7 +14,7 @@ class Consumer(user: String, password: String, host:String, port: String) {
     val connection = factory.newConnection()
     val channel = connection.createChannel()
 
-    val queueName = "log-aggregation-queue"
+    val queueName = "log-mapping-queue"
     channel.queueDeclare(queueName, true, false, false, null)
 
     println("Waiting for messages. To exit press CTRL+C")

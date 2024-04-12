@@ -4,7 +4,7 @@ import configFactory.ConfigFactory
 import dataGenerator.BookOrderGenerator
 import rabbitmq.producer.Producer
 
-import scala.io.circe.Json
+import io.circe.Json
 
 object mainProducer {
   def main(args: Array[String]): Unit = {
