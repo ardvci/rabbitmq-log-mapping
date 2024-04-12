@@ -11,7 +11,7 @@ consumerImage:
   imagePullPolicy: Never
 
 producerImage:
-  enabled: false
+  enabled: true
   name: log-agg-producer
   tag: latest
   imagePullPolicy: Never
